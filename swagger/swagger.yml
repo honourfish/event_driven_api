@@ -1,0 +1,52 @@
+swagger: "2.0"
+info:
+  title: "Events"
+  version: "0.0.1"
+produces:
+  - application/json
+consumes:
+  - application/json
+schemes:
+  - http
+paths:
+
+
+  /event:
+
+    get:
+      summary: "request an event"
+
+      responses:
+        '202':
+          description: Accepted
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: foo
+
+  # This is the request to see if the id is ready
+  /events/{id}:
+
+    get:
+      summary: "request a user by their username"
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+          type: integer
+
+      responses:
+        '200':
+          description: Retrieved
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: the name
+
+        '404':
+          description: Not Found
